@@ -1076,6 +1076,9 @@
             <div class="form-success" id="formSuccess">
               ✅ Заявка отправлена! Свяжусь с вами в ближайшее время.
             </div>
+            <div id="formError" style="display:none; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:10px; padding:16px; text-align:center; color:#FCA5A5; font-size:14px; margin-top:4px;">
+              ❌ Ошибка отправки. Напишите напрямую на <a href="mailto:Vladimir.Mensh0v@yandex.ru" style="color:#00F5D4;">Vladimir.Mensh0v@yandex.ru</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1263,25 +1266,53 @@ function validateField(id, groupId, test){
   return valid;
 }
 
-function submitForm(){
+async function submitForm(){
   const btn = document.getElementById('submitBtn');
   let valid = true;
-  valid &= validateField('fname','fg-name', v=>v.length>=2);
-  valid &= validateField('fphone','fg-phone', v=>/^[\+\d\s\-\(\)]{7,}$/.test(v));
-  valid &= validateField('femail','fg-email', v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
-  valid &= validateField('fmsg','fg-msg', v=>v.length>=10);
+  valid &= validateField('fname',  'fg-name',  v => v.length >= 2);
+  valid &= validateField('fphone', 'fg-phone', v => /^[\+\d\s\-\(\)]{7,}$/.test(v));
+  valid &= validateField('femail', 'fg-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+  valid &= validateField('fmsg',   'fg-msg',   v => v.length >= 10);
   if(!valid) return;
+
+  const name    = document.getElementById('fname').value.trim();
+  const phone   = document.getElementById('fphone').value.trim();
+  const email   = document.getElementById('femail').value.trim();
+  const message = document.getElementById('fmsg').value.trim();
 
   btn.disabled = true;
   btn.textContent = 'Отправляется...';
-  setTimeout(()=>{
-    document.getElementById('formSuccess').classList.add('show');
-    btn.style.display = 'none';
-    document.getElementById('fname').value='';
-    document.getElementById('fphone').value='';
-    document.getElementById('femail').value='';
-    document.getElementById('fmsg').value='';
-  }, 1200);
+
+  try {
+    const res = await fetch('https://formspree.io/f/xbdekkbd', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name,
+        phone,
+        email,
+        message,
+        _subject: `Новая заявка с сайта от ${name}`,
+        _replyto: email,
+      })
+    });
+
+    if(res.ok){
+      document.getElementById('formSuccess').classList.add('show');
+      btn.style.display = 'none';
+      document.getElementById('fname').value  = '';
+      document.getElementById('fphone').value = '';
+      document.getElementById('femail').value = '';
+      document.getElementById('fmsg').value   = '';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Получить консультацию →';
+    const errBlock = document.getElementById('formError');
+    if(errBlock) errBlock.style.display = 'block';
+  }
 }
 
 // ─── PHONE MASK ───
