@@ -18,20 +18,20 @@
 
   :root {
     --bg: #0A0A0A;
-    --bg2: #0F0F0F;
-    --bg3: #151515;
-    --blue-deep: #003D35;
+    --bg2: #0D1117;
+    --bg3: #111827;
+    --blue-deep: #1a1f3a;
     --blue: #00F5D4;
-    --blue-light: #00BBF9;
-    --blue-glow: rgba(0,245,212,0.12);
-    --blue-glow2: rgba(0,187,249,0.08);
+    --blue-light: #3B82F6;
+    --blue-glow: rgba(0,245,212,0.1);
+    --blue-glow2: rgba(59,130,246,0.08);
     --white: #FFFFFF;
-    --muted: #A0A0A0;
-    --muted2: #606060;
-    --border: rgba(0,245,212,0.22);
+    --muted: #9CA3AF;
+    --muted2: #6B7280;
+    --border: rgba(0,245,212,0.18);
     --border2: rgba(255,255,255,0.07);
-    --glass: rgba(21,21,21,0.75);
-    --card: rgba(21,21,21,0.92);
+    --glass: rgba(17,24,39,0.7);
+    --card: rgba(17,24,39,0.9);
     --font-display: 'Syne', sans-serif;
     --font-body: 'Inter', sans-serif;
     --radius: 16px;
@@ -64,7 +64,7 @@
     transition: var(--transition);
   }
   nav.scrolled {
-    background: rgba(10,10,10,0.94);
+    background: rgba(10,10,10,0.96);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border2);
@@ -130,13 +130,13 @@
   }
   .hero-glow {
     position: absolute; width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(0,245,212,0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0,245,212,0.06) 0%, transparent 65%);
     top: 50%; left: 50%; transform: translate(-50%, -50%);
     pointer-events: none; z-index: 0;
   }
   .hero-glow2 {
     position: absolute; width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(0,187,249,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 65%);
     top: 20%; right: 10%; pointer-events: none; z-index: 0;
   }
   .hero-content {
@@ -390,7 +390,7 @@
   .mockup-hero-bar {
     height: 4px; border-radius: 2px; margin-bottom: 14px;
   }
-  .proj1 .mockup-hero-bar { background: linear-gradient(90deg, var(--blue), var(--blue-light)); }
+  .proj1 .mockup-hero-bar { background: linear-gradient(90deg, var(--blue), #6EE7B7); }
   .proj2 .mockup-hero-bar { background: linear-gradient(90deg, #22C55E, #16A34A); }
   .proj3 .mockup-hero-bar { background: linear-gradient(90deg, #EF4444, #F97316); }
   .mockup-line { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.08); margin-bottom: 8px; }
@@ -465,59 +465,6 @@
   .timeline-step { color: var(--blue); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
   .timeline-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 10px; }
   .timeline-desc { color: var(--muted); font-size: 15px; line-height: 1.7; }
-
-  /* ─── REVIEWS ─── */
-  #reviews { background: var(--bg); overflow: hidden; }
-  .reviews-track-wrap { overflow: hidden; position: relative; }
-  .reviews-track-wrap::before, .reviews-track-wrap::after {
-    content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
-  }
-  .reviews-track-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
-  .reviews-track-wrap::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
-  .reviews-track {
-    display: flex; gap: 20px;
-    animation: scrollReviews 40s linear infinite;
-    width: max-content;
-  }
-  .reviews-track:hover { animation-play-state: paused; }
-  @keyframes scrollReviews {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .review-card {
-    background: var(--card); border: 1px solid var(--border2);
-    border-radius: 20px; padding: 28px 28px 24px;
-    width: 320px; flex-shrink: 0;
-    transition: var(--transition);
-  }
-  .review-card:hover { border-color: var(--border); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-  .review-stars { color: #F59E0B; font-size: 16px; margin-bottom: 14px; letter-spacing: 2px; }
-  .review-text { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-  .review-author { display: flex; align-items: center; gap: 12px; }
-  .review-avatar {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: linear-gradient(135deg, #0D2520, rgba(0,245,212,0.2));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .review-name { font-family: var(--font-display); font-size: 15px; font-weight: 700; }
-  .review-role { color: var(--muted2); font-size: 12px; }
-
-  /* ─── STATS ─── */
-  #stats {
-    background: linear-gradient(135deg, rgba(0,245,212,0.05) 0%, rgba(0,187,249,0.04) 100%);
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    padding: 80px 0;
-  }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .stat-block { text-align: center; padding: 20px; }
-  .stat-num {
-    font-family: var(--font-display); font-size: clamp(36px, 4vw, 56px);
-    font-weight: 800; color: var(--white); line-height: 1;
-    background: linear-gradient(135deg, var(--white), var(--blue));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .stat-label { color: rgba(255,255,255,0.6); font-size: 15px; margin-top: 8px; }
 
   /* ─── CONTACT ─── */
   #contact { background: var(--bg2); }
@@ -623,7 +570,6 @@
     .about-photo { max-width: 320px; margin: 0 auto; }
     .portfolio-grid { grid-template-columns: 1fr 1fr; }
     .why-grid { grid-template-columns: 1fr 1fr; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .footer-top { grid-template-columns: 1fr 1fr; }
     .nav-links, .nav-cta { display: none; }
@@ -633,7 +579,6 @@
     section { padding: 72px 0; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .why-grid { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
     .footer-top { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     .hero-btns { flex-direction: column; }
@@ -653,7 +598,7 @@
       <li><a href="#about">Обо мне</a></li>
       <li><a href="#services">Услуги</a></li>
       <li><a href="#portfolio">Работы</a></li>
-      <li><a href="#reviews">Отзывы</a></li>
+      
       <li><a href="#contact" class="nav-cta">Заказать сайт</a></li>
     </ul>
     <div class="burger" id="burger" aria-label="Меню">
@@ -669,7 +614,7 @@
   <a href="#services" class="menu-link">Услуги</a>
   <a href="#portfolio" class="menu-link">Работы</a>
   <a href="#process" class="menu-link">Процесс</a>
-  <a href="#reviews" class="menu-link">Отзывы</a>
+  
   <a href="#contact" class="menu-link">Заказать сайт</a>
 </div>
 
@@ -1068,112 +1013,6 @@
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Отзывы</div>
-      <h2 class="section-title">Что говорят <span class="grad">клиенты</span></h2>
-      <p class="section-sub">Более 100 довольных клиентов по всей России</p>
-    </div>
-  </div>
-  <div class="reviews-track-wrap">
-    <div class="reviews-track" id="reviewsTrack">
-      <!-- Row 1 (will be duplicated by JS) -->
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">«Владимир сделал лендинг для моей студии йоги за 5 дней. Результат превзошёл ожидания — сайт красивый, быстрый, сразу пошли заявки.»</div>
-        <div class="review-author">
-          <div class="review-avatar">🧘</div>
-          <div>
-            <div class="review-name">Анна Козлова</div>
-            <div class="review-role">Студия йоги «Гармония»</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">«Заказал корпоративный сайт для строительной компании. Всё сделано профессионально, в срок и с полной поддержкой после запуска.»</div>
-        <div class="review-author">
-          <div class="review-avatar">🏗️</div>
-          <div>
-            <div class="review-name">Дмитрий Смирнов</div>
-            <div class="review-role">СтройГрупп</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">«Интернет-магазин работает отлично. Удобная система управления, красивый дизайн. Продажи выросли на 40% после запуска.»</div>
-        <div class="review-author">
-          <div class="review-avatar">👗</div>
-          <div>
-            <div class="review-name">Мария Петрова</div>
-            <div class="review-role">Fashion-бутик «Стиль»</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">«Владимир разработал Telegram-бота для приёма заявок и интеграцию с нашей CRM. Автоматизация сэкономила нам 20+ часов в неделю.»</div>
-        <div class="review-author">
-          <div class="review-avatar">📊</div>
-          <div>
-            <div class="review-name">Игорь Волков</div>
-            <div class="review-role">Агентство недвижимости</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">«Сайт для ресторана сделан на высшем уровне. Онлайн-бронирование столиков, меню, акции — всё работает идеально. Спасибо!»</div>
-        <div class="review-author">
-          <div class="review-avatar">🍽️</div>
-          <div>
-            <div class="review-name">Алексей Новиков</div>
-            <div class="review-role">Ресторан «Вкус»</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">«Обратился повторно — уже третий проект. Качество не падает, сроки соблюдаются, всегда на связи. Рекомендую всем!»</div>
-        <div class="review-author">
-          <div class="review-avatar">🎯</div>
-          <div>
-            <div class="review-name">Сергей Иванов</div>
-            <div class="review-role">Маркетинговое агентство</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section id="stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-block reveal">
-        <div class="stat-num" data-target="50" data-suffix="+">0</div>
-        <div class="stat-label">Выполненных проектов</div>
-      </div>
-      <div class="stat-block reveal reveal-delay-1">
-        <div class="stat-num" data-target="100" data-suffix="+">0</div>
-        <div class="stat-label">Довольных клиентов</div>
-      </div>
-      <div class="stat-block reveal reveal-delay-2">
-        <div class="stat-num" data-target="5" data-suffix="">0</div>
-        <div class="stat-label">Лет опыта</div>
-      </div>
-      <div class="stat-block reveal reveal-delay-3">
-        <div class="stat-num" data-suffix="">24/7</div>
-        <div class="stat-label">Поддержка клиентов</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
@@ -1197,7 +1036,7 @@
               <div class="contact-item-val">Vladimir.Mensh0v@yandex.ru</div>
             </div>
           </a>
-          <a href="https://t.me/vmenshov" class="contact-item reveal reveal-delay-2">
+          <a href="https://t.me/lotusnotesonelove" class="contact-item reveal reveal-delay-2">
             <div class="contact-item-icon">✈️</div>
             <div>
               <div class="contact-item-label">Telegram</div>
@@ -1252,7 +1091,7 @@
         <a href="#" class="logo" style="font-size:26px;">VM<span>.</span></a>
         <p>Создаю современные сайты для бизнеса. Качество, скорость, результат.</p>
         <div class="footer-socials">
-          <a href="https://t.me/vmenshov" class="social-btn" title="Telegram">✈️</a>
+          <a href="https://t.me/lotusnotesonelove" class="social-btn" title="Telegram">✈️</a>
           <a href="mailto:Vladimir.Mensh0v@yandex.ru" class="social-btn" title="Email">✉️</a>
           <a href="tel:+79999656228" class="social-btn" title="Телефон">📞</a>
         </div>
@@ -1264,7 +1103,7 @@
           <li><a href="#services">Услуги</a></li>
           <li><a href="#portfolio">Портфолио</a></li>
           <li><a href="#process">Процесс</a></li>
-          <li><a href="#reviews">Отзывы</a></li>
+          
         </ul>
       </div>
       <div class="footer-col">
@@ -1282,7 +1121,7 @@
         <ul>
           <li><a href="tel:+79999656228">+7 (999) 965-62-28</a></li>
           <li><a href="mailto:Vladimir.Mensh0v@yandex.ru">Vladimir.Mensh0v@yandex.ru</a></li>
-          <li><a href="https://t.me/vmenshov">Telegram</a></li>
+          <li><a href="https://t.me/lotusnotesonelove">Telegram</a></li>
         </ul>
       </div>
     </div>
@@ -1294,87 +1133,95 @@
 </footer>
 
 <script>
-// ─── PARTICLES ───
+// ─── AURORA BACKGROUND ───
 (function(){
   const canvas = document.getElementById('particles-canvas');
   const ctx = canvas.getContext('2d');
-  let particles = [], W, H;
-  const PARTICLE_COUNT = 90;
+  let W, H, t = 0;
+
+  // Slow-drifting aurora orbs
+  const ORBS = [
+    { cx: 0.20, cy: 0.30, rx: 0.38, ry: 0.28, r: 0, g: 245, b: 212, a: 0.055, dx: 0.00012, dy: 0.00008 },
+    { cx: 0.80, cy: 0.65, rx: 0.32, ry: 0.22, r: 59,  g: 130, b: 246, a: 0.060, dx: -0.00010, dy: 0.00006 },
+    { cx: 0.55, cy: 0.15, rx: 0.26, ry: 0.18, r: 0,   g: 245, b: 212, a: 0.035, dx: 0.00007,  dy: 0.00012 },
+    { cx: 0.10, cy: 0.80, rx: 0.22, ry: 0.20, r: 59,  g: 130, b: 246, a: 0.040, dx: 0.00009,  dy: -0.00007 },
+    { cx: 0.90, cy: 0.25, rx: 0.20, ry: 0.16, r: 0,   g: 245, b: 212, a: 0.030, dx: -0.00008, dy: 0.00010 },
+  ];
+
+  // Tiny floating dust motes
+  const DUST = Array.from({length: 55}, () => ({
+    x: Math.random(), y: Math.random(),
+    vx: (Math.random()-0.5)*0.00018,
+    vy: (Math.random()-0.5)*0.00015,
+    r: Math.random()*1.4+0.3,
+    a: Math.random()*0.35+0.08,
+    da: (Math.random()-0.5)*0.0015,
+    teal: Math.random() > 0.45,
+  }));
 
   function resize(){
     W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
   }
 
-  function Particle(){
-    this.x = Math.random()*W;
-    this.y = Math.random()*H;
-    this.vx = (Math.random()-0.5)*0.4;
-    this.vy = (Math.random()-0.5)*0.4;
-    this.r = Math.random()*1.6+0.4;
-    this.alpha = Math.random()*0.5+0.1;
-    this.alphaDir = (Math.random()-0.5)*0.003;
-    this.teal = Math.random() > 0.4; // mix teal and cyan
-  }
-  Particle.prototype.update = function(){
-    this.x += this.vx; this.y += this.vy;
-    if(this.x<0) this.x=W; if(this.x>W) this.x=0;
-    if(this.y<0) this.y=H; if(this.y>H) this.y=0;
-    this.alpha += this.alphaDir;
-    if(this.alpha<0.05||this.alpha>0.65) this.alphaDir*=-1;
-  };
+  function drawOrbs(){
+    ORBS.forEach(o => {
+      // Gently drift position
+      o.cx += o.dx; o.cy += o.dy;
+      if(o.cx < -0.1) o.dx = Math.abs(o.dx);
+      if(o.cx >  1.1) o.dx = -Math.abs(o.dx);
+      if(o.cy < -0.1) o.dy = Math.abs(o.dy);
+      if(o.cy >  1.1) o.dy = -Math.abs(o.dy);
 
-  function drawGrid(){
-    const step = 60;
-    ctx.strokeStyle = 'rgba(0,245,212,0.025)';
-    ctx.lineWidth = 0.6;
-    for(let x=0; x<W; x+=step){
-      ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
-    }
-    for(let y=0; y<H; y+=step){
-      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
-    }
+      const x = o.cx * W, y = o.cy * H;
+      const rX = o.rx * W, rY = o.ry * H;
+      const pulse = 1 + 0.06 * Math.sin(t * 0.0008 + o.cx * 5);
+
+      // Elliptical radial gradient — soft diffuse blob
+      const grd = ctx.createRadialGradient(x, y, 0, x, y, Math.max(rX, rY) * pulse);
+      grd.addColorStop(0,   `rgba(${o.r},${o.g},${o.b},${o.a * 1.6})`);
+      grd.addColorStop(0.4, `rgba(${o.r},${o.g},${o.b},${o.a * 0.7})`);
+      grd.addColorStop(1,   `rgba(${o.r},${o.g},${o.b},0)`);
+
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(1, rY / rX);
+      ctx.beginPath();
+      ctx.arc(0, 0, rX * pulse, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+      ctx.restore();
+    });
   }
 
-  function init(){
-    resize();
-    particles = Array.from({length:PARTICLE_COUNT}, ()=>new Particle());
-    loop();
+  function drawDust(){
+    DUST.forEach(d => {
+      d.x += d.vx; d.y += d.vy;
+      if(d.x < 0) d.x = 1; if(d.x > 1) d.x = 0;
+      if(d.y < 0) d.y = 1; if(d.y > 1) d.y = 0;
+      d.a += d.da;
+      if(d.a < 0.05 || d.a > 0.45) d.da *= -1;
+
+      ctx.beginPath();
+      ctx.arc(d.x * W, d.y * H, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = d.teal
+        ? `rgba(0,245,212,${d.a})`
+        : `rgba(59,130,246,${d.a * 0.8})`;
+      ctx.fill();
+    });
   }
 
   function loop(){
-    ctx.clearRect(0,0,W,H);
-    drawGrid();
-    // Draw connections
-    for(let i=0;i<particles.length;i++){
-      for(let j=i+1;j<particles.length;j++){
-        const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<120){
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x,particles[i].y);
-          ctx.lineTo(particles[j].x,particles[j].y);
-          ctx.strokeStyle=`rgba(0,245,212,${0.07*(1-dist/120)})`;
-          ctx.lineWidth=0.7;
-          ctx.stroke();
-        }
-      }
-    }
-    // Draw particles
-    particles.forEach(p=>{
-      p.update();
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle = p.teal
-        ? `rgba(0,245,212,${p.alpha})`
-        : `rgba(0,187,249,${p.alpha})`;
-      ctx.fill();
-    });
+    t++;
+    ctx.clearRect(0, 0, W, H);
+    drawOrbs();
+    drawDust();
     requestAnimationFrame(loop);
   }
 
-  window.addEventListener('resize', ()=>{ resize(); });
-  init();
+  window.addEventListener('resize', resize);
+  resize();
+  loop();
 })();
 
 // ─── NAV SCROLL ───
@@ -1405,35 +1252,6 @@ const tio = new IntersectionObserver((entries)=>{
   entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'), i*80); } });
 }, { threshold: 0.2 });
 timelineItems.forEach(el=>tio.observe(el));
-
-// ─── COUNTER ANIMATION ───
-function animateCounter(el){
-  const target = parseInt(el.dataset.target);
-  const suffix = el.dataset.suffix || '';
-  if(!target) return;
-  let start = 0;
-  const duration = 1800;
-  const step = timestamp => {
-    if(!start) start = timestamp;
-    const progress = Math.min((timestamp-start)/duration, 1);
-    const eased = 1 - Math.pow(1-progress, 3);
-    el.textContent = Math.round(eased*target) + suffix;
-    if(progress < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-const statNums = document.querySelectorAll('.stat-num[data-target]');
-const sio = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ animateCounter(e.target); sio.unobserve(e.target); } });
-}, { threshold: 0.6 });
-statNums.forEach(el=>sio.observe(el));
-
-// ─── DUPLICATE REVIEWS ───
-const track = document.getElementById('reviewsTrack');
-if(track){
-  const clone = track.innerHTML;
-  track.innerHTML += clone;
-}
 
 // ─── FORM VALIDATION ───
 function validateField(id, groupId, test){
